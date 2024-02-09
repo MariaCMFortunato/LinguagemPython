@@ -5,8 +5,6 @@ from time import sleep
 
 
 # Classes da aplicação Consumos de Veículos:
-
-
 class Veiculo:
     # Os veículos caracterizam-se genericamente por terem matrícula, marca,modelo, cilindrada e tipo de energia
     # Trata-se de uma super classe que será dividida por tipo de enrgia motriz
@@ -104,12 +102,12 @@ class ImportaDados:
         consumoSubset = consumos[colunas]
         # ["data", "valor", "preço litro", "kms totais"]
         # retorna as primeiras 40 linhas
-        consumoSubset.head(40)
+        consumoSubset.head(50)
         # retorna o subconjunto de dados criado
         return consumoSubset
 
     def importaCSV():
-        # instância que a informação do ficheiro e do caminho do ficheiro a importar
+        # instância que armazena a informação do ficheiro e do caminho do ficheiro a importar
         caminho = ImportaDados.ficheiroAImportar()
         # instância que aramzena os dados do ficheiro importado
         consumosf = pandas.read_csv(f"{caminho}.csv", sep=";")
@@ -168,22 +166,46 @@ class ExportaDados:
                 df_dados = ImportaDados.importaEXCEL()
             elif escolha == 3:
                 Menu.cabecalho("\033[33mEXPORTAR DADOS PARA TABELA SQL\033[m")
-                ImportaDados.imprimirDados(df_dados)
+                # ImportaDados.imprimirDados(df_dados)
                 ExportaDados.criarBD(df_dados)
             elif escolha == 4:
                 Menu.cabecalho("\033[33mO PROGRAMA VAI TERMINAR!\033[m")
                 break
             else:
                 Menu.cabecalho("\033[31mERRO! Escolha uma opção válida!\033[m")
-                sleep(2)
+                os.system("pause")
 
     def criarBD(df_dados):
         baseDados = ExportaDados.dadosAExportar()
         conexao = sqlite3.connect(f"{baseDados}.db")
         df_dados.to_sql(name="consumos", con=conexao,
                         if_exists="replace", index=True, index_label="indice")
-
+        print("\033[32mDados exportados comm sucesso!\033[m")
+        os.system("pause")
         conexao.close
+
+
+class ManipulaDados:
+    def mostradados():
+        baseDados = ExportaDados.dadosAExportar()
+        conexao = sqlite3.connect(f"{baseDados}.db")
+        cmd = conexao.cursor()
+        # cmd.execute("""select * from 'consumos';""")
+        # conexao.close
+        # tabela = pandas.DataFrame(cmd.fetchall(), columns=[
+        #                           "indice", "matricula", "data", "valor", "preco litro", "kms"])
+        kmIniciais = cmd.execute(
+            """select kms from 'consumos' where indice=0;""")
+        litros = cmd.execute(
+            """ select * from 'consumos' sum(consumos.valor/'consumos.preco litro'); """)
+        kmsFinais = cmd.execute(
+            """select kms from 'consumos' where indice=43;""")
+        kmsPercorridos = kmsFinais - kmIniciais
+        consumo = kmsPercorridos / 100 * litros
+
+        print(consumo)
+        os.system("pause")
+        # ImportaDados.imprimirDados(tabela)
 
 
 class Menu:
@@ -229,6 +251,7 @@ if __name__ == '__main__':
             ExportaDados.menuBD()
         elif escolha == 4:
             Menu.cabecalho("\033[33mCALCULAR CONSUMO DE UM VEÍCULO\033[m")
+            ManipulaDados.mostradados()
         elif escolha == 5:
             Menu.cabecalho("\033[33mO PROGRAMA VAI TERMINAR!\033[m")
             break
