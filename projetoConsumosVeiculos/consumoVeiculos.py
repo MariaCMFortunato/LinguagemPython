@@ -8,6 +8,7 @@ from time import sleep
 class Veiculo:
     # Os veículos caracterizam-se genericamente por terem matrícula, marca,modelo, cilindrada e tipo de energia
     # Trata-se de uma super classe que será dividida por tipo de enrgia motriz
+    # Classe não usada nesta fase do projeto - será usada numa das fases seguintes
 
     def __init__(self, matricula, marca, modelo, cilindrada, energia):
         self.matricula = matricula
@@ -27,12 +28,14 @@ class Veiculo:
 
 class VeiculoGasoleo(Veiculo):
     # Classe filha da classe Veículo, com tipo de energia prédefinido para gasóleo
+    #Classe não usada nesta fase do projeto - será usada numa das fases seguintes
     def __init__(self, matricula, marca, modelo, cilindrada, energia):
         super().__init__(matricula, marca, modelo, cilindrada, energia)
         self.tipoDeEnergia = "Gasóleo"
 
 
 class Abastecimento:
+    #Classe não usada nesta fase do projeto - será usada numa das fases seguintes
     def __init__(self, data, valorPago, kmsAtuais):
         self.data = data
         self.valorPago = valorPago
@@ -41,6 +44,7 @@ class Abastecimento:
 
 class AbastGasoleo(Abastecimento):
     # Classe filha da classe Abastecimento usada para os veículos que abastecem gasóleo
+    #Classe não usada nesta fase do projeto - será usada numa das fases seguintes
     def __init__(self, data, valorPago, precoLitro, kmsAtuais):
         super().__init__(data, valorPago, kmsAtuais)
         self.precoLitro = precoLitro
@@ -70,9 +74,6 @@ class AbastGasoleo(Abastecimento):
 
 
 class ImportaDados:
-    # def __init__(self):
-    #     pass
-
     def ficheiroAImportar():
         # recebe a indicação do ficheiro a importar e do caminho absoluto concatena a informação
         # depois de mudar a barra e devolve o caminho completo do ficheiro para importação, sem
@@ -101,7 +102,7 @@ class ImportaDados:
         # criar o subconjunto das colunas a importar
         consumoSubset = consumos[colunas]
         # ["data", "valor", "preço litro", "kms totais"]
-        # retorna as primeiras 40 linhas
+        # retorna as primeiras 50 linhas
         consumoSubset.head(50)
         # retorna o subconjunto de dados criado
         return consumoSubset
@@ -109,7 +110,7 @@ class ImportaDados:
     def importaCSV():
         # instância que armazena a informação do ficheiro e do caminho do ficheiro a importar
         caminho = ImportaDados.ficheiroAImportar()
-        # instância que aramzena os dados do ficheiro importado
+        # instância que armazena os dados do ficheiro importado
         consumosf = pandas.read_csv(f"{caminho}.csv", sep=";")
         consumosf2 = ImportaDados.colunasAImportar(consumosf)
         df_dados = pandas.DataFrame(consumosf2)
@@ -166,7 +167,6 @@ class ExportaDados:
                 df_dados = ImportaDados.importaEXCEL()
             elif escolha == 3:
                 Menu.cabecalho("\033[33mEXPORTAR DADOS PARA TABELA SQL\033[m")
-                # ImportaDados.imprimirDados(df_dados)
                 ExportaDados.criarBD(df_dados)
             elif escolha == 4:
                 Menu.cabecalho("\033[33mO PROGRAMA VAI TERMINAR!\033[m")
@@ -189,23 +189,42 @@ class ManipulaDados:
     def mostradados():
         baseDados = ExportaDados.dadosAExportar()
         conexao = sqlite3.connect(f"{baseDados}.db")
-        cmd = conexao.cursor()
-        # cmd.execute("""select * from 'consumos';""")
-        # conexao.close
-        # tabela = pandas.DataFrame(cmd.fetchall(), columns=[
-        #                           "indice", "matricula", "data", "valor", "preco litro", "kms"])
-        kmIniciais = cmd.execute(
-            """select kms from 'consumos' where indice=0;""")
-        litros = cmd.execute(
-            """ select * from 'consumos' sum(consumos.valor/'consumos.preco litro'); """)
-        kmsFinais = cmd.execute(
-            """select kms from 'consumos' where indice=43;""")
-        kmsPercorridos = kmsFinais - kmIniciais
-        consumo = kmsPercorridos / 100 * litros
+        cursor = conexao.cursor()
+        matricula=input("\033[35mIndique a matrícula da viatura: \033[m")
+    
+        cursor.execute("SELECT kms FROM consumos WHERE matricula = ? ORDER BY data ASC LIMIT 1", (matricula,))
+        kmsIniciais=cursor.fetchone()[0]
 
-        print(consumo)
+        cursor.execute("SELECT kms FROM consumos WHERE matricula = ? ORDER BY data DESC LIMIT 1", (matricula,))
+        kmsFinais=cursor.fetchone()[0]
+
+        kmsPercorridos = kmsFinais - kmsIniciais
+
+        cursor.execute("SELECT SUM(valor/preco_litro) FROM consumos WHERE matricula = ? ", (matricula,))
+        litros = cursor.fetchone()[0]
+
+        consumo = (100 * litros) / kmsPercorridos
+        consumoFormatado="{:.2f}".format(consumo)
+
+
+        # cursor.execute("SELECT * FROM consumos WHERE matricula = ? ", (matricula,))
+        # tabela = pandas.DataFrame(cursor.fetchall(), columns=[
+        #                          "indice", "matricula", "data", "valor", "preco litro", "kms"])
+        
+
         os.system("pause")
-        # ImportaDados.imprimirDados(tabela)
+        #ImportaDados.imprimirDados(tabela)
+        # print(f"\033[36mKms Iniciais da Viatura: {kmsIniciais}\033[m")
+        # print(f"\033[36mKms Finais da Viatura: {kmsFinais}\033[m")
+        # print(f"\033[36mKms percorridos pela Viatura: {kmsPercorridos}\033[m")
+        # print(f"\033[36mLitros totais consumidos: {litros}\033[m")
+        print("")
+        Menu.cabecalho("\033[33mCONSUMO MÉDIO TOTAL DA VIATURA\033[m".format(matricula))
+        print("\033[4;36m {:=^28} litros aos 100kms\033[m".format(consumoFormatado))
+        print("")
+        os.system("pause")
+
+        conexao.close
 
 
 class Menu:

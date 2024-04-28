@@ -1,0 +1,512 @@
+[
+{
+  "model": "courses.subject",
+  "pk": 1,
+  "fields": {
+    "title": "Ciências Informáticas",
+    "slug": "ciencias-informaticas"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 2,
+  "fields": {
+    "title": "Audiovisuais e Produção dos Media",
+    "slug": "audiovisuais-e-producao-dos-media"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 3,
+  "fields": {
+    "title": "Tecnologia dos Processos Químicos",
+    "slug": "tecnologia-dos-processos-quimicos"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 4,
+  "fields": {
+    "title": "Artes do Espetáculo",
+    "slug": "artes-do-espetaculo"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 5,
+  "fields": {
+    "title": "Artesanato",
+    "slug": "artesanato"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 6,
+  "fields": {
+    "title": "História e Arqueologia",
+    "slug": "historia-e-arqueologia"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 7,
+  "fields": {
+    "title": "Biblioteconomia, Arquivo e Documentação (BAD)",
+    "slug": "biblioteconomia-arquivo-e-documentacao-bad"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 8,
+  "fields": {
+    "title": "Comércio",
+    "slug": "comercio"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 9,
+  "fields": {
+    "title": "Marketing e Publicidade",
+    "slug": "marketing-e-publicidade"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 10,
+  "fields": {
+    "title": "Finanças, Banca e Seguros",
+    "slug": "financas-banca-e-seguros"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 11,
+  "fields": {
+    "title": "Área de Educação e Formação:",
+    "slug": "area-de-educacao-e-formacao"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 12,
+  "fields": {
+    "title": "Matemática e Estatísitica",
+    "slug": "matematica-e-estatisitica"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "owner": 1,
+    "subject": 1,
+    "title": "Programador Informática",
+    "slug": "programador-informatica",
+    "overview": "Curso de nível 4.\r\n Efetuar a análise de sistemas, a gestão de base de dados, desenvolver aplicações e proceder à instalação e manutenção de equipamentos e aplicações informáticas de escritório, utilitários e de gestão, assegurando a otimização do seu funcionamento e respeitando as normas de segurança, higiene e saúde no trabalho e de proteção do ambiente.",
+    "created": "2024-03-19T12:24:33.389Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 2,
+  "fields": {
+    "owner": 1,
+    "subject": 1,
+    "title": "Course 1",
+    "slug": "course1",
+    "overview": "Course 1 with Module 1 and Module 2",
+    "created": "2024-03-19T13:27:22.167Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 3,
+  "fields": {
+    "owner": 1,
+    "subject": 1,
+    "title": "Course 2",
+    "slug": "course2",
+    "overview": "Course 2 with Module 1",
+    "created": "2024-03-19T13:31:45.622Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 4,
+  "fields": {
+    "owner": 2,
+    "subject": 1,
+    "title": "Curso Técnico/a de Informática - Instalação e Gestão de Redes",
+    "slug": "TI-IGR",
+    "overview": "Efetuar a instalação, a configuração e manutenção de redes informáticas e dos equipamentos de apoio à estrutura de redes, procedendo à implementação dos níveis de segurança adequados, assegurando a otimização do seu funcionamento e respeitando as normas de segurança, higiene e saúde no trabalho e de proteção do ambiente.",
+    "created": "2024-03-27T10:41:35.003Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 5,
+  "fields": {
+    "owner": 2,
+    "subject": 1,
+    "title": "Técnico/a de Informática - Sistemas",
+    "slug": "TI-SIS",
+    "overview": "Efetuar a instalação, a configuração e a manutenção de ferramentas, equipamentos e sistemas informáticos, suportados em diferentes plataformas e sistemas operativos, e proceder à gestão e administração de base de dados e ao desenvolvimento de software, assegurando a otimização do seu funcionamento e respeitando as normas de segurança, higiene e saúde no trabalho e de proteção do ambiente.",
+    "created": "2024-03-27T10:42:20.970Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 7,
+  "fields": {
+    "owner": 2,
+    "subject": 12,
+    "title": "Matemática Aplicada à Gestão",
+    "slug": "MAT-MAG",
+    "overview": "Matemática aplicada à Gestão",
+    "created": "2024-03-27T11:01:21.119Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 8,
+  "fields": {
+    "owner": 2,
+    "subject": 8,
+    "title": "Técnico/a de Vidro Artístico",
+    "slug": "C-TVA",
+    "overview": "Conceber e executar peças de vidro de cariz artístico e utilitário, assim como, gerir ou colaborar na gestão do negócio, tendo em vista a otimização da qualidade da produção e de acordo com as normas de segurança e saúde e de proteção do ambiente.",
+    "created": "2024-03-27T11:25:31.237Z"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "title": "Arquitetura interna do computador",
+    "description": "0769 - Arquitetura interna do computador",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 2,
+  "fields": {
+    "course": 1,
+    "title": "Dispositivos e periféricos",
+    "description": "0770 - Dispositivos e periféricos",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 3,
+  "fields": {
+    "course": 1,
+    "title": "Conexões de rede",
+    "description": "0771 - Conexões de rede",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 4,
+  "fields": {
+    "course": 1,
+    "title": "Sistemas operativos - tipologias",
+    "description": "0797 - Sistemas operativos - tipologias",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 5,
+  "fields": {
+    "course": 1,
+    "title": "Utilitários",
+    "description": "0798 - Utilitários",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 6,
+  "fields": {
+    "course": 1,
+    "title": "Sistemas de rede local",
+    "description": "0799 - Sistemas de rede local",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 7,
+  "fields": {
+    "course": 1,
+    "title": "Serviços adicionais de rede",
+    "description": "0800 - Serviços adicionais de rede",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 8,
+  "fields": {
+    "course": 1,
+    "title": "Administração de redes locais",
+    "description": "0801 - Administração de redes locais",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 9,
+  "fields": {
+    "course": 1,
+    "title": "Processamento computacional",
+    "description": "0802 - Processamento computacional",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 10,
+  "fields": {
+    "course": 1,
+    "title": "Informática - noções básicas",
+    "description": "7846 - Informática - noções básicas",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 11,
+  "fields": {
+    "course": 1,
+    "title": "Algoritmos",
+    "description": "0804 - Algoritmos",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 12,
+  "fields": {
+    "course": 1,
+    "title": "Estruturas de dados",
+    "description": "0805 - Estruturas de dados",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 13,
+  "fields": {
+    "course": 1,
+    "title": "Princípios metodológicos de programação",
+    "description": "0806 - Princípios metodológicos de programação",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 14,
+  "fields": {
+    "course": 1,
+    "title": "Programação em C/C++ - fundamentos",
+    "description": "0809 - Programação em C/C++ - fundamentos",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 15,
+  "fields": {
+    "course": 1,
+    "title": "Programação em C/C++ - avançada",
+    "description": "0810 - Programação em C/C++ - avançada",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 16,
+  "fields": {
+    "course": 1,
+    "title": "Análise de sistemas",
+    "description": "0811 - Análise de sistemas",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 17,
+  "fields": {
+    "course": 1,
+    "title": "Fundamentos da linguagem SQL",
+    "description": "10788 - Fundamentos da linguagem SQL",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 18,
+  "fields": {
+    "course": 1,
+    "title": "Administração de bases de dados para programadores",
+    "description": "3933 - Administração de bases de dados para programadores",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 19,
+  "fields": {
+    "course": 1,
+    "title": "Programação de sistemas distribuídos - JAVA",
+    "description": "0816 - Programação de sistemas distribuídos - JAVA",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 20,
+  "fields": {
+    "course": 1,
+    "title": "Desenvolvimento de aplicações web em JAVA",
+    "description": "10791 - Desenvolvimento de aplicações web em JAVA",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 21,
+  "fields": {
+    "course": 1,
+    "title": "Programação em C#",
+    "description": "3935 - Programação em C#",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 22,
+  "fields": {
+    "course": 1,
+    "title": "Programação ASP.Net Core MVC",
+    "description": "10792 - Programação ASP.Net Core MVC",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 23,
+  "fields": {
+    "course": 1,
+    "title": "Fundamentos de Python",
+    "description": "10793 - Fundamentos de Python",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 24,
+  "fields": {
+    "course": 1,
+    "title": "Programação avançada com Python",
+    "description": "10794 - Programação avançada com Python",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 25,
+  "fields": {
+    "course": 1,
+    "title": "Segurança no desenvolvimento de software",
+    "description": "10795 - Segurança no desenvolvimento de software",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 26,
+  "fields": {
+    "course": 1,
+    "title": "Projeto de programação",
+    "description": "10790 - Projeto de programação",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 27,
+  "fields": {
+    "course": 1,
+    "title": "Programação em linguagem SQL avançada",
+    "description": "0814 - Programação em linguagem SQL avançada",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 28,
+  "fields": {
+    "course": 1,
+    "title": "Programação em Visual Basic NET",
+    "description": "3934 - Programação em Visual Basic NET",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 29,
+  "fields": {
+    "course": 1,
+    "title": "Introdução à utilização e proteção dos dados pessoais",
+    "description": "10672 - Introdução à utilização e proteção dos dados pessoais",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 30,
+  "fields": {
+    "course": 1,
+    "title": "Teletrabalho",
+    "description": "10759 - Teletrabalho",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 31,
+  "fields": {
+    "course": 2,
+    "title": "Module 1",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 32,
+  "fields": {
+    "course": 2,
+    "title": "Module 2",
+    "description": "",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 33,
+  "fields": {
+    "course": 3,
+    "title": "Module 1",
+    "description": "",
+    "order": 0
+  }
+}
+]
